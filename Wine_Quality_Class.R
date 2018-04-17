@@ -7,6 +7,7 @@ library(e1071)
 library(stringr)
 library(ROCR)
 library(class)
+library(ggplot2)
 
 #utility function for import from csv file
 import.csv <- function(filename){
@@ -204,7 +205,7 @@ for (ii in 1:k.nn) {
   if (ii == 1) {
     knn.output <- data.frame(ii, cv_error)
   } else {
-    knn.output <- rbind(df.output, data.frame(ii, cv_error))
+    knn.output <- rbind(knn.output, data.frame(ii, cv_error))
   }
 }
 ggplot(data = knn.output, aes(x= ii , y= cv_error)) + 
